@@ -3,25 +3,25 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-
 def compute_correlation(metrics_dict):
     """
     Computes and visualizes the correlation matrix for modularity, conductance, and normalized cut.
     """
     # Convert results dictionary to DataFrame
     df = pd.DataFrame(metrics_dict).T  # Transpose to get partitions as rows
-
+    
     # Compute Pearson correlation
     corr_matrix = df.corr(method='pearson')
-
+    
     # Plot heatmap
     plt.figure(figsize=(8, 6))
     sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
     plt.title('Correlation Heatmap of Modularity, Conductance, and Normalized Cut')
     plt.show()
-
+    
     return corr_matrix
 
+#### Data Inputs ####
 
 # Ca-GrQc Data:
 # metrics_results = {
@@ -29,6 +29,7 @@ def compute_correlation(metrics_dict):
 #     "MLRMCL": {"modularity": 0.7427413738676999, "conductance": 0.1738296615132966, "ncut": 0.17415314672067236},
 #     "GPMetis": {"modularity": 0.3461386598176384, "conductance": 0.48873626632514905, "ncut": 0.4896096516715551}
 # }
+
 # Wiki-Vote
 # metrics_results = {
 #     "CNM": {"modularity": 0.3500, "conductance": 0.2612, "ncut": 0.0043},
